@@ -1,14 +1,14 @@
 import { Container } from "react-bootstrap";
-import Header from "../layout/header/index.tsx";
-import Footer from "../layout/footer/index.tsx";
-
+import Header from "../layout/Header";
+import Footer from "../layout/Footer";
+import Home from "../pages/Home/Home.jsx";
 const App = () => {
   return (
     <>
       <Header />
       <main>
         <Container>
-          <h2>store</h2>
+          <Home />
         </Container>
       </main>
       <Footer />
