@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { products } from "../../products";
+import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Row, Col, Image, ListGroup, Card, Button } from "react-bootstrap";
@@ -10,8 +10,14 @@ const Product = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   useEffect(() => {
-    const findedProduct = products.find((item) => item._id === id);
-    if (findedProduct) setProduct(products.find((item) => item._id === id));
+    const sendRequest = async () => {
+      const fetchProducts = await axios.get(
+        `http://127.0.0.1:5000/api/products/${id}`
+      );
+      const { data } = fetchProducts;
+      setProduct(data);
+    };
+    sendRequest();
   }, [id]);
   return (
     <>
