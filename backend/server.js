@@ -1,5 +1,9 @@
-const express = require("express");
-const products = require("./data/products");
+import express from "express";
+import products from "./data/products.js";
+import dotenv from "dotenv";
+
+dotenv.config();
+
 const app = express();
 
 app.use((req, res, next) => {
@@ -28,4 +32,4 @@ app.get("/api/products/:id", (req, res) => {
   }
 });
 
-app.listen(5000, console.log("server started"));
+app.listen(process.env.PORT, console.log("server started"));
