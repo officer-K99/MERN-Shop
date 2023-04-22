@@ -1,8 +1,12 @@
 import express from "express";
+import connectDB from "./config/db.js";
+import colors from "colors";
 import products from "./data/products.js";
 import dotenv from "dotenv";
 
 dotenv.config();
+
+connectDB();
 
 const app = express();
 
@@ -32,4 +36,4 @@ app.get("/api/products/:id", (req, res) => {
   }
 });
 
-app.listen(process.env.PORT, console.log("server started"));
+app.listen(process.env.PORT, console.log("server started".cyan.bgBlue));
